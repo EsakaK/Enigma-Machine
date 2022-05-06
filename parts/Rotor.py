@@ -13,6 +13,9 @@ class Rotor(object):
         # It should be fixed when the machine is created.
         self.encode_offset = 0  # per character encoding offset which can be calculated by pos.
 
+    def __call__(self, x: chr):
+        return self.encoding_single_character(x)
+
     def init(self, key: chr):
         """
         :param key: single capital letter used to initiate rotor's state of rotation
@@ -42,6 +45,21 @@ class Rotor(object):
             e_char = x
         return e_char
 
+    def decoding_single_character(self, x):
+        """
+        :param x: the english char need to be encoded.
+        :return: encoded char.
+        """
+        if ord(x) >= ord('a') and ord(x) <= ord('z'):
+            tmp = ord(x) - ord('a') - self.encode_offset
+            e_char = chr(tmp % 26 + ord('a'))
+        elif ord(x) >= ord('A') and ord(x) <= ord('Z'):
+            tmp = ord(x) - ord('A') - self.encode_offset
+            e_char = chr(tmp % 26 + ord('A'))
+        else:
+            e_char = x
+        return e_char
+
     def progression(self, flag=True):
         """
         Detects if this rotor needs to be rotated.
@@ -53,11 +71,3 @@ class Rotor(object):
             self.reset_encode_offset()
             return self.pos == 'A'  # omit True signal
         return False
-
-
-if __name__ == '__main__':
-    R = Rotor(0)
-    R.init('M')
-    print(R.encoding_single_character('a'))
-    R.progression()
-    print(R.encoding_single_character('a'))

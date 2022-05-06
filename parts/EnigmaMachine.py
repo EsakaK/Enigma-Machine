@@ -23,8 +23,46 @@ class EnigmaMachine(object):
         """
         for i in range(self.rotor_num):
             r = Rotor(i)
+            r.init(keys[i])
             self.rotors[i] = r
+        return None
 
+    def encoding_single_character(self, x):
+        y = x
+        for i in range(self.rotor_num):
+            y = self.rotors[i].encoding_single_character(y)
+        return y
 
-if __name__ == '__main__':
-    e = EnigmaMachine('ABC')
+    def decoding_single_character(self, x):
+        y = x
+        for i in reversed(range(self.rotor_num)):
+            y = self.rotors[i].decoding_single_character(y)
+        return y
+
+    def step(self, rotor_index):
+        """Recursively progress every rotor"""
+        if rotor_index == 0:
+            return self.rotors[rotor_index].progression(True)
+        return self.rotors[rotor_index].progression(self.step(rotor_index - 1))
+
+    def coding(self, x_sentence: str, encoding=True):
+        """
+        X -> Y
+        Every single chr encoded over, step one on rotors to change the rotation state.(26 Decimal)
+        :param x_sentence: The str need to be encoded.
+        :return: The str encoded
+        """
+        if encoding:
+            y_sentence = ''
+            for x in x_sentence:
+                y = self.encoding_single_character(x)
+                y_sentence += y
+                self.step(self.rotor_num - 1)  # forward decimal
+            return y_sentence
+        else:
+            y_sentence = ''
+            for x in x_sentence:
+                y = self.decoding_single_character(x)
+                y_sentence += y
+                self.step(self.rotor_num - 1)  # forward decimal
+            return y_sentence
