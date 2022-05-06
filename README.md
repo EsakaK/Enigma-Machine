@@ -6,8 +6,13 @@
 本仓库力图实现最基本的加密解密过程（不包括插线板）
 
 ### Usage
+> 编码
 ```commandline
-python run.py --key ABC --file_path text.txt
+python run.py --key ABC --file_path ./text/demo.txt
+```
+> 解码
+```commandline
+python run.py --key ABC --file_path ./text/res.txt --save_path ./text/decoded.txt --encoding 0
 ```
 - key：是三转子恩格玛机的加密/解密秘钥，由交流者制定和共享
 - file_path：应该是一个纯文本文件的路径
