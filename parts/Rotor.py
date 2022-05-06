@@ -32,8 +32,14 @@ class Rotor(object):
         :param x: the english char need to be encoded.
         :return: encoded char.
         """
-        tmp = ord(x) - ord('a') + self.encode_offset
-        e_char = chr(tmp % 26 + ord('a'))
+        if ord(x) >= ord('a') and ord(x) <= ord('z'):
+            tmp = ord(x) - ord('a') + self.encode_offset
+            e_char = chr(tmp % 26 + ord('a'))
+        elif ord(x) >= ord('A') and ord(x) <= ord('Z'):
+            tmp = ord(x) - ord('A') + self.encode_offset
+            e_char = chr(tmp % 26 + ord('A'))
+        else:
+            e_char = x
         return e_char
 
     def progression(self, flag=True):
