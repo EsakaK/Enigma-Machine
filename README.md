@@ -7,10 +7,12 @@
 
 ### Usage
 ```commandline
-python --key ABC --textfile file_path run.py
+python run.py --key ABC --file_path text.txt
 ```
-- ABC 是三转子恩格玛机的加密/解密秘钥，由交流者制定和共享
-- file_path 应该是一个纯文本文件的绝对路径
+- key：是三转子恩格玛机的加密/解密秘钥，由交流者制定和共享
+- file_path：应该是一个纯文本文件的路径
+- save_path：解码后的文件保存的路径（默认为/text/res.txt）
+- encoding: 编码/解码，1为编码，0为解码（默认为1）
 
 由于恩格玛机的“自反性”，不需要对明文和暗文进行区分，恩格玛机只会完成它该做的。
 

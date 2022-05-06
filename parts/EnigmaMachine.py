@@ -1,7 +1,7 @@
 """
 This is body of Enigma Machine which contains 3 Rotors and a wiring board(not implemented yet)
 """
-from Rotor import Rotor
+from parts.Rotor import Rotor
 
 
 class EnigmaMachine(object):
@@ -31,12 +31,16 @@ class EnigmaMachine(object):
         y = x
         for i in range(self.rotor_num):
             y = self.rotors[i].encoding_single_character(y)
+            if not y:
+                return False
         return y
 
     def decoding_single_character(self, x):
         y = x
         for i in reversed(range(self.rotor_num)):
             y = self.rotors[i].decoding_single_character(y)
+            if not y:
+                return False
         return y
 
     def step(self, rotor_index):
@@ -53,16 +57,24 @@ class EnigmaMachine(object):
         :return: The str encoded
         """
         if encoding:
+            print('start encoding...')
             y_sentence = ''
             for x in x_sentence:
                 y = self.encoding_single_character(x)
-                y_sentence += y
-                self.step(self.rotor_num - 1)  # forward decimal
+                if y:
+                    y_sentence += y
+                    self.step(self.rotor_num - 1)  # forward decimal
+                else:
+                    y_sentence +=x
             return y_sentence
         else:
             y_sentence = ''
             for x in x_sentence:
                 y = self.decoding_single_character(x)
-                y_sentence += y
-                self.step(self.rotor_num - 1)  # forward decimal
+                if y:
+                    y_sentence += y
+                    self.step(self.rotor_num - 1)  # forward decimal
+                else:
+                    y_sentence += x
+            print('start decoding...')
             return y_sentence
