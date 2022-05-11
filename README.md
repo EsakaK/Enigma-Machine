@@ -21,5 +21,10 @@ python run.py --key ABC --file_path ./text/res.txt --save_path ./text/decoded.tx
 
 由于恩格玛机的“自反性”，不需要对明文和暗文进行区分，恩格玛机只会完成它该做的。
 
+### 前端
+
+演示demo：[enigma](http://47.103.38.227:9997/page/main.html)
+
+
 ### Link
 [【计算机博物志】战争密码（上集）如何复刻一台恩格玛机](https://www.bilibili.com/video/BV1DS4y1R7hM)
