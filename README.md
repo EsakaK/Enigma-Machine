@@ -21,9 +21,9 @@ python run.py --key ABC --file_path ./text/res.txt --save_path ./text/decoded.tx
 
 由于恩格玛机的“自反性”，不需要对明文和暗文进行区分，恩格玛机只会完成它该做的。
 
-### 前端
+### DEMO
 
-演示demo：[enigma](http://47.103.38.227:9997/page/main.html)
+演示：[enigma](http://47.103.38.227:9997/page/main.html)
 
 
 ### Link
