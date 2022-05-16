@@ -23,7 +23,7 @@ python run.py --key ABC --file_path ./text/res.txt --save_path ./text/decoded.tx
 
 ### 前端
 
-演示demo：[enigma](http://47.103.38.227:9997/page/main.html)
+演示demo：[enigma](http://47.103.38.227:9997/page/enigma.html)
 
 
 ### Link
