@@ -23,8 +23,7 @@ python run.py --key ABC --file_path ./text/res.txt --save_path ./text/decoded.tx
 
 ### DEMO
 
-演示：[enigma](http://47.103.38.227:9997/page/main.html)
-
+演示emo[enigma](http://47.103.38.227:9997/page/enigma.html)
 
 ### Link
 [【计算机博物志】战争密码（上集）如何复刻一台恩格玛机](https://www.bilibili.com/video/BV1DS4y1R7hM)
